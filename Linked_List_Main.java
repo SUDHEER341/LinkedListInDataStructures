@@ -19,7 +19,9 @@ public class Linked_List_Main {
         myList3.addElement(70);
         myList3.insert(56, 30);
         myList3.displayElement();
-        myList3.pop();
+        myList3.popFirstElement();
+        myList3.displayElement();
+        myList3.popLastElement();
         myList3.displayElement();
     }
 }

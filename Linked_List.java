@@ -1,12 +1,12 @@
 package com.linkedlist;
 
 
-       public class Linked_List<T> {
-           public Node<T> head;
-           public Node<T> tail;
+       public class Linked_List<G> {
+           public Node<G> head;
+           public Node<G> tail;
 
-           public void push(T data) {
-               Node<T> node = new Node<>(data);
+           public void push(G data) {
+               Node<G> node = new Node<>(data);
                if (head == null) {
                    head = node;
                    tail = node;
@@ -15,9 +15,9 @@ package com.linkedlist;
                    head = node;
                }
            }
-           public boolean insert(T searchData, T insertData) {
-               Node<T> newNode = new Node(insertData);
-               Node<T> searchedNode = search(searchData);
+           public boolean insert(G searchData, G insertData) {
+               Node<G> newNode = new Node(insertData);
+               Node<G> searchedNode = search(searchData);
                if (searchedNode == null)
                    return false;
                else {
@@ -32,16 +32,16 @@ package com.linkedlist;
                if (head==null){
                    System.out.println("List is Empty");
                }else {
-                   Node<T> temp = head;
+                   Node<G> temp = head;
                    while (temp != null) {
                        System.out.print(temp.getData()+" ");
-                       temp = (Node<T>) temp.getNext();
+                       temp = (Node<G>) temp.getNext();
                    }
                    System.out.println();
                }
            }
-           public void addElement(T data){
-               Node<T> newnode=new Node<>(data);
+           public void addElement(G data){
+               Node<G> newnode=new Node<>(data);
                if (head==null) {
                    head = newnode;
                    tail = newnode;
@@ -50,21 +50,45 @@ package com.linkedlist;
                    tail=newnode;
                }
            }
-           public T pop(){
+           public G pop(){
                if (head==null) {
                    return null;
                }else {
-                   T data=head.getData();
-                   head=(Node<T>) head.getNext();
+                   G data=head.getData();
+                   head=(Node<G>) head.getNext();
                    return data;
                }
            }
-           public Node<T> search(T searchData) {
-               Node<T> temp = head;
+
+           public void popFirstElement() {
+               if (head == null) {
+                   System.out.println("Linked List is Empty");
+               } else {
+                   G data = head.getData();
+                   head = (Node<G>) head.getNext();
+                   System.out.println(data);
+               }
+           }
+           public void popLastElement() {
+               if (head == null) {
+                   System.out.println("Linked List is Empty");
+               } else {
+                   Node<G> temp = head;
+                   while (temp.getNext() != tail) {
+                       temp = (Node<G>) temp.getNext();
+                   }
+                   G data = tail.getData();
+                   temp.setNext(null);
+                   tail = temp;
+                   System.out.println(data);
+               }
+           }
+           public Node<G> search(G searchData) {
+               Node<G> temp = head;
                while (temp != null) {
                    if (temp.getData().equals(searchData))
                        return temp;
-                   temp = (Node<T>) temp.getNext();
+                   temp = (Node<G>) temp.getNext();
                }
                return null;
            }
