@@ -50,6 +50,15 @@ package com.linkedlist;
                    tail=newnode;
                }
            }
+           public T pop(){
+               if (head==null) {
+                   return null;
+               }else {
+                   T data=head.getData();
+                   head=(Node<T>) head.getNext();
+                   return data;
+               }
+           }
            public Node<T> search(T searchData) {
                Node<T> temp = head;
                while (temp != null) {
@@ -59,18 +68,15 @@ package com.linkedlist;
                }
                return null;
            }
-
-
-
-           public boolean isEmpty(){
+           public boolean isEmpty()
+           {
                return head==null ? true:false;
            }
 
            @Override
-           public String toString() {
-               return "LinkedList{" +
-                       "head=" + head +
-                       '}';
+           public String toString()
+           {
+               return "LinkedList{" + "head=" + head + '}';
            }
        }
 
